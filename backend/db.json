@@ -22,25 +22,11 @@
       "salario": 18000
     },
     {
-      "nome": "Design UX/IU",
-      "foto": "foto4.jpg",
-      "descricao": "Trabalhar com Design de páginas web ",
-      "salario": 5000,
-      "id": "031Bqg_N6Bo"
-    },
-    {
-      "id": "WO-TUbLClGQ",
-      "nome": "",
-      "foto": "",
-      "descricao": "",
-      "salario": 0
-    },
-    {
-      "id": "-f1NNYGJEmk",
-      "nome": "",
-      "foto": "",
-      "descricao": "",
-      "salario": 0
+      "id": "9PbfiWSPRuI",
+      "nome": "Dev. Backend",
+      "foto": "foto1.jpg",
+      "descricao": "Desenvolvedor backend",
+      "salario": "3000"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

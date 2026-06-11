@@ -1,4 +1,4 @@
-//estilização do painel vagas
+//estilização de painel vags
 //declaração de variáveis
 $primaria: #0000ff;
 $secundaria: #999;
@@ -35,6 +35,7 @@ form {
     font-size: 1rem;
 
     &:focus {
+      // quando clicar no input
       outline: none;
       border-color: $primaria;
       box-shadow: 0 4px 16px rgba($color: #000000, $alpha: 0.1);
@@ -60,8 +61,7 @@ form {
     &[type='button']:nth-of-type(2) {
       background-color: $secundaria;
       &:hover {
-        background-color: darken($color: $aviso, $amount: 10%);
-      }
+        background-color: darken($color: $aviso, $amount: 10%);   }
     }
 
     &[type='button']:nth-of-type(3) {
@@ -73,23 +73,25 @@ form {
   }
 }
 
+// estilização da tabela
+
 //estilização da tabela
-section {
+section{
   max-width: 1300px;
   margin: 10px auto;
   padding: 1rem;
   background-color: #fff;
   border-radius: 5px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   overflow-x: auto;
 
-  .table {
+  .table{
     width: 100%;
     border-collapse: collapse;
     margin-top: 1.5rem;
     font-size: 0.8rem;
 
-    th {
+    th{
       padding: 12px;
       text-align: left;
       border-bottom: 1px solid #aaa;
@@ -97,39 +99,35 @@ section {
       color: #555;
     }
 
-    thead {
+    thead{
       background-color: #999;
-
-      th {
+      th{
         color: #222;
         font-weight: bold;
       }
     }
 
-    tbody {
-      tr {
-        &:hover {
+    tbody{
+      tr{
+        &:hover{
           background-color: #999;
         }
       }
-
-      button {
+      button{
         border: none;
         background-color: $secundaria;
         padding: 5px;
         cursor: pointer;
         border-radius: 5px;
 
-        &:hover {
+        &:hover{
           background-color: darken($color: $aviso, $amount: 10%);
         }
       }
     }
   }
-}
+}//fim da tabela
 
-//fim da tabela
-
-.footer {
+.footer{
   height: 8vh;
 }
