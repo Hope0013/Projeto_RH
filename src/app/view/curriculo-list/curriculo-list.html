@@ -1,0 +1,75 @@
+<div class="list-wrapper">
+  <div class="list-header">
+    <div class="header-titulo">
+      <h2>👥 Painel de Currículos</h2>
+      <p>Visualização administrativa de todos os currículos cadastrados na plataforma.</p>
+    </div>
+    <a routerLink="/curriculos/novo" class="btn-novo">+ Novo Currículo</a>
+  </div>
+
+  <!-- Mensagem de feedback -->
+  @if (mensagem) {
+    <div class="alert" [ngClass]="tipoMensagem === 'sucesso' ? 'alert-sucesso' : 'alert-erro'">
+      {{ mensagem }}
+    </div>
+  }
+
+  <!-- Busca -->
+  <div class="busca-area">
+    <input
+      type="text"
+      placeholder="🔍 Buscar por nome, habilidade ou formação..."
+      (input)="filtrar($event)"
+    />
+  </div>
+
+  <!-- Loading -->
+  @if (carregando) {
+    <div class="estado-vazio">
+      <p>Carregando currículos...</p>
+    </div>
+  }
+
+  <!-- Sem resultados -->
+  @if (!carregando && curriculosFiltrados.length === 0) {
+    <div class="estado-vazio">
+      <p>Nenhum currículo encontrado.</p>
+      <a routerLink="/curriculos/novo" class="btn-novo-vazio">Cadastrar o primeiro currículo</a>
+    </div>
+  }
+
+  <!-- Tabela -->
+  @if (!carregando && curriculosFiltrados.length > 0) {
+    <section class="tabela-container">
+      <table class="tabela">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Habilidades</th>
+            <th>Formação</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (curriculo of curriculosFiltrados; track curriculo.id) {
+            <tr>
+              <td>{{ curriculo.id }}</td>
+              <td>{{ curriculo.nome }}</td>
+              <td>{{ curriculo.email }}</td>
+              <td class="habilidades-cell">{{ curriculo.habilidades }}</td>
+              <td class="formacao-cell">{{ curriculo.formacao }}</td>
+              <td class="acoes">
+                <a [routerLink]="['/curriculos/detalhe', curriculo.id]" class="btn-acao btn-ver">Ver</a>
+                <a [routerLink]="['/curriculos/editar', curriculo.id]" class="btn-acao btn-editar">Editar</a>
+                <button type="button" class="btn-acao btn-excluir" (click)="excluir(curriculo.id)">Excluir</button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+      <p class="total">Total: {{ curriculosFiltrados.length }} currículo(s)</p>
+    </section>
+  }
+</div>

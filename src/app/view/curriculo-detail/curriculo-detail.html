@@ -1,0 +1,70 @@
+<div class="detalhe-wrapper">
+
+  <!-- Loading -->
+  @if (carregando) {
+    <div class="estado-centro">
+      <p>⏳ Carregando currículo...</p>
+    </div>
+  }
+
+  <!-- Erro -->
+  @if (erro) {
+    <div class="estado-centro erro">
+      <p>{{ erro }}</p>
+      <button type="button" (click)="voltar()" class="btn-voltar">← Voltar</button>
+    </div>
+  }
+
+  <!-- Conteúdo -->
+  @if (!carregando && !erro && curriculo) {
+    <div class="card-curriculo">
+
+      <!-- Cabeçalho do perfil -->
+      <div class="perfil-header">
+        <div class="avatar">{{ curriculo.nome.charAt(0).toUpperCase() }}</div>
+        <div class="perfil-info">
+          <h2>{{ curriculo.nome }}</h2>
+          <p class="perfil-contato">
+            <span>✉️ {{ curriculo.email }}</span>
+            <span>📱 {{ curriculo.telefone }}</span>
+          </p>
+          @if (curriculo.linkedin) {
+            <a [href]="curriculo.linkedin" target="_blank" class="link-linkedin">
+              🔗 LinkedIn
+            </a>
+          }
+        </div>
+      </div>
+
+      <hr />
+
+      <!-- Seção: Formação -->
+      <div class="secao">
+        <h3>🎓 Formação Acadêmica</h3>
+        <p>{{ curriculo.formacao }}</p>
+      </div>
+
+      <!-- Seção: Experiência -->
+      <div class="secao">
+        <h3>💼 Experiência Profissional</h3>
+        <p>{{ curriculo.experiencia }}</p>
+      </div>
+
+      <!-- Seção: Habilidades -->
+      <div class="secao">
+        <h3>⚡ Habilidades</h3>
+        <div class="tags">
+          @for (hab of getHabilidades(); track hab) {
+            <span class="tag">{{ hab }}</span>
+          }
+        </div>
+      </div>
+
+      <!-- Rodapé de ações -->
+      <div class="acoes">
+        <button type="button" (click)="voltar()" class="btn-voltar">← Voltar</button>
+        <a [routerLink]="['/curriculos/editar', curriculo.id]" class="btn-editar">✏️ Editar</a>
+      </div>
+    </div>
+  }
+</div>

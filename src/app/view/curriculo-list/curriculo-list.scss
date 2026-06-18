@@ -1,0 +1,203 @@
+$primaria: #2563eb;
+$primaria-hover: #1d4ed8;
+$erro: #dc2626;
+$sucesso: #16a34a;
+$borda: #e5e7eb;
+$texto: #374151;
+
+.list-wrapper {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+
+  .list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid $borda;
+    padding-bottom: 1rem;
+
+    .header-titulo {
+      h2 {
+        font-size: 1.6rem;
+        color: $texto;
+        margin-bottom: 0.2rem;
+      }
+      p {
+        color: #6b7280;
+        font-size: 0.9rem;
+      }
+    }
+
+    .btn-novo {
+      padding: 0.6rem 1.2rem;
+      background-color: $primaria;
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: $primaria-hover;
+      }
+    }
+  }
+
+  .alert {
+    padding: 0.9rem 1.2rem;
+    border-radius: 8px;
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+
+    &.alert-sucesso {
+      background-color: #dcfce7;
+      color: $sucesso;
+      border: 1px solid #86efac;
+    }
+    &.alert-erro {
+      background-color: #fee2e2;
+      color: $erro;
+      border: 1px solid #fca5a5;
+    }
+  }
+
+  .busca-area {
+    margin-bottom: 1.2rem;
+
+    input {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border: 1.5px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      box-sizing: border-box;
+
+      &:focus {
+        outline: none;
+        border-color: $primaria;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+      }
+    }
+  }
+
+  .estado-vazio {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #6b7280;
+
+    p { font-size: 1.1rem; margin-bottom: 1rem; }
+
+    .btn-novo-vazio {
+      padding: 0.7rem 1.5rem;
+      background-color: $primaria;
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.2s;
+
+      &:hover { background-color: $primaria-hover; }
+    }
+  }
+
+  .tabela-container {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    overflow-x: auto;
+
+    .tabela {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+
+      th {
+        padding: 0.85rem 1rem;
+        text-align: left;
+        background-color: #f3f4f6;
+        color: #4b5563;
+        font-weight: 700;
+        border-bottom: 2px solid $borda;
+        white-space: nowrap;
+      }
+
+      td {
+        padding: 0.8rem 1rem;
+        border-bottom: 1px solid $borda;
+        color: $texto;
+        vertical-align: middle;
+      }
+
+      tbody tr {
+        transition: background-color 0.15s;
+        &:hover { background-color: #f9fafb; }
+        &:last-child td { border-bottom: none; }
+      }
+
+      .habilidades-cell,
+      .formacao-cell {
+        max-width: 220px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .acoes {
+        display: flex;
+        gap: 0.4rem;
+        white-space: nowrap;
+      }
+
+      .btn-acao {
+        padding: 0.35rem 0.75rem;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        text-decoration: none;
+        display: inline-block;
+        transition: opacity 0.2s;
+
+        &:hover { opacity: 0.85; }
+      }
+
+      .btn-ver {
+        background-color: #e0f2fe;
+        color: #0369a1;
+      }
+
+      .btn-editar {
+        background-color: #fef9c3;
+        color: #854d0e;
+      }
+
+      .btn-excluir {
+        background-color: #fee2e2;
+        color: $erro;
+      }
+    }
+
+    .total {
+      padding: 0.6rem 1rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+      text-align: right;
+    }
+  }
+
+  @media (max-width: 700px) {
+    padding: 1rem;
+
+    .list-header {
+      flex-direction: column;
+      .btn-novo { width: 100%; text-align: center; }
+    }
+  }
+}

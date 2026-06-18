@@ -1,0 +1,84 @@
+<div class="meu-curriculo-wrapper">
+
+  <div class="page-header">
+    <h2>Meu Currículo</h2>
+    <p>Aqui você pode visualizar, editar ou excluir seu currículo profissional.</p>
+  </div>
+
+  <!-- Mensagem de feedback -->
+  @if (mensagem) {
+    <div class="alert" [ngClass]="tipoMensagem === 'sucesso' ? 'alert-sucesso' : 'alert-erro'">
+      {{ mensagem }}
+    </div>
+  }
+
+  <!-- Loading -->
+  @if (carregando) {
+    <div class="estado-centro">
+      <p>Carregando seu currículo...</p>
+    </div>
+  }
+
+  <!-- Sem currículo cadastrado -->
+  @if (!carregando && !curriculo) {
+    <div class="estado-vazio">
+      <div class="icone-vazio">📄</div>
+      <h3>Você ainda não tem um currículo cadastrado</h3>
+      <p>Crie seu currículo agora para se candidatar às vagas disponíveis.</p>
+      <a routerLink="/curriculos/novo" class="btn-criar">+ Criar Meu Currículo</a>
+    </div>
+  }
+
+  <!-- Currículo existente -->
+  @if (!carregando && curriculo) {
+    <div class="card-curriculo">
+
+      <!-- Cabeçalho do perfil -->
+      <div class="perfil-header">
+        <div class="avatar">{{ curriculo.nome.charAt(0).toUpperCase() }}</div>
+        <div class="perfil-info">
+          <h2>{{ curriculo.nome }}</h2>
+          <p class="perfil-contato">
+            <span>✉️ {{ curriculo.email }}</span>
+            <span>📱 {{ curriculo.telefone }}</span>
+          </p>
+          @if (curriculo.linkedin) {
+            <a [href]="curriculo.linkedin" target="_blank" class="link-linkedin">
+              🔗 Ver perfil no LinkedIn
+            </a>
+          }
+        </div>
+      </div>
+
+      <hr />
+
+      <!-- Formação -->
+      <div class="secao">
+        <h3>🎓 Formação Acadêmica</h3>
+        <p>{{ curriculo.formacao }}</p>
+      </div>
+
+      <!-- Experiência -->
+      <div class="secao">
+        <h3>💼 Experiência Profissional</h3>
+        <p>{{ curriculo.experiencia }}</p>
+      </div>
+
+      <!-- Habilidades -->
+      <div class="secao">
+        <h3>⚡ Habilidades</h3>
+        <div class="tags">
+          @for (hab of getHabilidades(); track hab) {
+            <span class="tag">{{ hab }}</span>
+          }
+        </div>
+      </div>
+
+      <!-- Ações -->
+      <div class="acoes">
+        <a [routerLink]="['/curriculos/editar', curriculo.id]" class="btn-editar">✏️ Editar Currículo</a>
+        <button type="button" class="btn-excluir" (click)="excluir()">🗑️ Excluir Currículo</button>
+      </div>
+    </div>
+  }
+</div>

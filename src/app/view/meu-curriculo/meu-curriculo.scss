@@ -1,0 +1,237 @@
+$primaria: #2563eb;
+$primaria-hover: #1d4ed8;
+$erro: #dc2626;
+$sucesso: #16a34a;
+$borda: #e5e7eb;
+$texto: #374151;
+
+.meu-curriculo-wrapper {
+  max-width: 720px;
+  margin: 2.5rem auto;
+  padding: 1rem;
+
+  .page-header {
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid $borda;
+    padding-bottom: 1rem;
+
+    h2 {
+      font-size: 1.6rem;
+      color: $texto;
+      margin-bottom: 0.2rem;
+    }
+    p {
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+  }
+
+  .alert {
+    padding: 0.9rem 1.2rem;
+    border-radius: 8px;
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+
+    &.alert-sucesso {
+      background-color: #dcfce7;
+      color: $sucesso;
+      border: 1px solid #86efac;
+    }
+    &.alert-erro {
+      background-color: #fee2e2;
+      color: $erro;
+      border: 1px solid #fca5a5;
+    }
+  }
+
+  .estado-centro {
+    text-align: center;
+    padding: 3rem;
+    color: #6b7280;
+  }
+
+  .estado-vazio {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+
+    .icone-vazio {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      color: $texto;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      color: #6b7280;
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .btn-criar {
+      padding: 0.8rem 1.8rem;
+      background-color: $primaria;
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background-color 0.2s;
+
+      &:hover { background-color: $primaria-hover; }
+    }
+  }
+
+  .card-curriculo {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+
+    .perfil-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+
+      .avatar {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, $primaria, #7c3aed);
+        color: #fff;
+        font-size: 2rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .perfil-info {
+        h2 {
+          font-size: 1.5rem;
+          color: $texto;
+          margin-bottom: 0.4rem;
+        }
+
+        .perfil-contato {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+          color: #6b7280;
+          font-size: 0.9rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .link-linkedin {
+          display: inline-block;
+          font-size: 0.88rem;
+          color: $primaria;
+          text-decoration: none;
+          font-weight: 600;
+
+          &:hover { text-decoration: underline; }
+        }
+      }
+    }
+
+    hr {
+      border: none;
+      border-top: 1.5px solid $borda;
+      margin: 1.5rem 0;
+    }
+
+    .secao {
+      margin-bottom: 1.5rem;
+
+      h3 {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: #4b5563;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        color: $texto;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        white-space: pre-line;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+
+        .tag {
+          background-color: #eff6ff;
+          color: #1d4ed8;
+          border: 1px solid #bfdbfe;
+          padding: 0.3rem 0.75rem;
+          border-radius: 999px;
+          font-size: 0.82rem;
+          font-weight: 600;
+        }
+      }
+    }
+
+    .acoes {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+      border-top: 1.5px solid $borda;
+      padding-top: 1rem;
+      flex-wrap: wrap;
+
+      .btn-editar {
+        flex: 1;
+        padding: 0.75rem 1.2rem;
+        background-color: $primaria;
+        color: #fff;
+        border-radius: 8px;
+        text-decoration: none;
+        text-align: center;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: background-color 0.2s;
+
+        &:hover { background-color: $primaria-hover; }
+      }
+
+      .btn-excluir {
+        flex: 1;
+        padding: 0.75rem 1.2rem;
+        background-color: #fee2e2;
+        color: $erro;
+        border: 1.5px solid #fca5a5;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &:hover { background-color: #fecaca; }
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    padding: 0.5rem;
+
+    .card-curriculo {
+      padding: 1.2rem;
+
+      .perfil-header { flex-direction: column; align-items: center; text-align: center; }
+      .acoes { flex-direction: column; }
+    }
+  }
+}

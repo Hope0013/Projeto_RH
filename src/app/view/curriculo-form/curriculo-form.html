@@ -1,0 +1,147 @@
+<div class="form-wrapper">
+  <div class="form-header">
+    <h2>{{ modoEdicao ? '✏️ Editar Currículo' : '📄 Cadastrar Currículo' }}</h2>
+    <p>{{ modoEdicao ? 'Atualize suas informações profissionais.' : 'Preencha seus dados para criar seu currículo.' }}</p>
+  </div>
+
+  <!-- Mensagem de feedback -->
+  @if (mensagem) {
+    <div class="alert" [ngClass]="tipoMensagem === 'sucesso' ? 'alert-sucesso' : 'alert-erro'">
+      {{ mensagem }}
+    </div>
+  }
+
+  <!-- Loading -->
+  @if (carregando) {
+    <div class="loading">Carregando dados...</div>
+  }
+
+  <form [formGroup]="formulario" (ngSubmit)="salvar()" novalidate>
+
+    <!-- Nome Completo -->
+    <div class="campo-grupo">
+      <label for="nome">Nome Completo <span class="obrigatorio">*</span></label>
+      <input
+        id="nome"
+        type="text"
+        formControlName="nome"
+        placeholder="Seu nome completo"
+        [class.invalido]="campoInvalido('nome')"
+      />
+      @if (campoInvalido('nome')) {
+        <span class="erro-campo">
+          @if (campo('nome')?.errors?.['required']) { Nome é obrigatório. }
+          @if (campo('nome')?.errors?.['minlength']) { Mínimo de 3 caracteres. }
+        </span>
+      }
+    </div>
+
+    <!-- Email -->
+    <div class="campo-grupo">
+      <label for="email">E-mail <span class="obrigatorio">*</span></label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        placeholder="seu@email.com"
+        [class.invalido]="campoInvalido('email')"
+      />
+      @if (campoInvalido('email')) {
+        <span class="erro-campo">
+          @if (campo('email')?.errors?.['required']) { E-mail é obrigatório. }
+          @if (campo('email')?.errors?.['email']) { Informe um e-mail válido. }
+        </span>
+      }
+    </div>
+
+    <!-- Telefone -->
+    <div class="campo-grupo">
+      <label for="telefone">Telefone <span class="obrigatorio">*</span></label>
+      <input
+        id="telefone"
+        type="text"
+        formControlName="telefone"
+        placeholder="(00) 00000-0000"
+        [class.invalido]="campoInvalido('telefone')"
+      />
+      @if (campoInvalido('telefone')) {
+        <span class="erro-campo">Telefone é obrigatório.</span>
+      }
+    </div>
+
+    <!-- Formação -->
+    <div class="campo-grupo">
+      <label for="formacao">Formação Acadêmica <span class="obrigatorio">*</span></label>
+      <textarea
+        id="formacao"
+        formControlName="formacao"
+        rows="3"
+        placeholder="Ex: Bacharelado em Ciência da Computação – UNICAMP (2022)"
+        [class.invalido]="campoInvalido('formacao')"
+      ></textarea>
+      @if (campoInvalido('formacao')) {
+        <span class="erro-campo">
+          @if (campo('formacao')?.errors?.['required']) { Formação é obrigatória. }
+          @if (campo('formacao')?.errors?.['minlength']) { Descreva melhor sua formação (mín. 10 caracteres). }
+        </span>
+      }
+    </div>
+
+    <!-- Experiência -->
+    <div class="campo-grupo">
+      <label for="experiencia">Experiência Profissional <span class="obrigatorio">*</span></label>
+      <textarea
+        id="experiencia"
+        formControlName="experiencia"
+        rows="4"
+        placeholder="Ex: Desenvolvedor Frontend na Empresa XYZ (2021–2024)"
+        [class.invalido]="campoInvalido('experiencia')"
+      ></textarea>
+      @if (campoInvalido('experiencia')) {
+        <span class="erro-campo">
+          @if (campo('experiencia')?.errors?.['required']) { Experiência é obrigatória. }
+          @if (campo('experiencia')?.errors?.['minlength']) { Descreva melhor sua experiência (mín. 10 caracteres). }
+        </span>
+      }
+    </div>
+
+    <!-- Habilidades -->
+    <div class="campo-grupo">
+      <label for="habilidades">Habilidades <span class="obrigatorio">*</span></label>
+      <input
+        id="habilidades"
+        type="text"
+        formControlName="habilidades"
+        placeholder="Ex: Angular, TypeScript, HTML, CSS, Git"
+        [class.invalido]="campoInvalido('habilidades')"
+      />
+      @if (campoInvalido('habilidades')) {
+        <span class="erro-campo">Habilidades são obrigatórias.</span>
+      }
+    </div>
+
+    <!-- LinkedIn -->
+    <div class="campo-grupo">
+      <label for="linkedin">LinkedIn <span class="opcional">(opcional)</span></label>
+      <input
+        id="linkedin"
+        type="url"
+        formControlName="linkedin"
+        placeholder="https://linkedin.com/in/seuperfil"
+        [class.invalido]="campoInvalido('linkedin')"
+      />
+      @if (campoInvalido('linkedin')) {
+        <span class="erro-campo">Informe uma URL válida (https://...).</span>
+      }
+    </div>
+
+    <!-- Botões -->
+    <div class="botoes">
+      <button type="submit" class="btn-salvar">
+        {{ modoEdicao ? '💾 Salvar Alterações' : '✅ Cadastrar Currículo' }}
+      </button>
+      <a routerLink="/meu-curriculo" class="btn-cancelar">Cancelar</a>
+    </div>
+
+  </form>
+</div>
